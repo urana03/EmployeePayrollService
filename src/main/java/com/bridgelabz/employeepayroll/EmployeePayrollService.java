@@ -3,10 +3,14 @@ package com.bridgelabz.employeepayroll;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 public class EmployeePayrollService {
-	
-    private List<EmployeePayrollData> employeePayrollList;
+	public enum IOService{CONSOLE_IO,FILE_IO,DB_IO,REST_IO}
+    public List<EmployeePayrollData> employeePayrollList;
 	public EmployeePayrollService() {}
 	public EmployeePayrollService(List <EmployeePayrollData>employeePayrollList) {
 		this.employeePayrollList = employeePayrollList;
@@ -17,11 +21,15 @@ public class EmployeePayrollService {
 		EmployeePayrollService employeePayrollService = new EmployeePayrollService(employeePayrollList);
 		Scanner inputReader = new Scanner(System.in);
 		employeePayrollService.readEmployeePayrollData(inputReader);
-		employeePayrollService.writeEmployeePayrollData();
+		employeePayrollService.writeEmployeePayrollData(IOService.CONSOLE_IO);
 		
 	}
-	private void writeEmployeePayrollData() {
-		System.out.println("Employee payroll data: "+employeePayrollList);
+	void writeEmployeePayrollData(IOService ioService) {
+		if(ioService.equals(IOService.CONSOLE_IO))
+		    System.out.println("Employee payroll data: "+employeePayrollList);
+		else if(ioService.equals(EmployeePayrollService.IOService.FILE_IO))
+		      new EmployeePayrollFileIOService().writeData(employeePayrollList);
+		
 	}
 	private void readEmployeePayrollData(Scanner inputReader) {
 		System.out.print("Enter Employee ID: ");
