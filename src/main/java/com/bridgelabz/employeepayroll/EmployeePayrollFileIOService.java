@@ -1,9 +1,12 @@
 package com.bridgelabz.employeepayroll;
 
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.List;
+
+import com.bridgelabz.employeepayroll.EmployeePayrollService.IOService;
 
 public class EmployeePayrollFileIOService {
 
@@ -23,6 +26,9 @@ public class EmployeePayrollFileIOService {
 		          catch(IOException e) {
 		        	  e.printStackTrace();
 		        	  }
+			}
+			public void printData() throws IOException{
+				Files.lines(new File("payroll.txt").toPath()).forEach(System.out::println);
 			}
 }
 
