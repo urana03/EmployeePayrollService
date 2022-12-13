@@ -43,6 +43,7 @@ public class EmployeePayrollService {
 	public void printData(IOService ioService) throws IOException {
 		if(ioService.equals(IOService.FILE_IO))
 			new EmployeePayrollFileIOService().printData();
+
 	}
 	public long countEntries(IOService ioService) throws IOException {
 		if(ioService.equals(IOService.FILE_IO))
@@ -50,5 +51,6 @@ public class EmployeePayrollService {
 		return 0;
 		
 	}
-	
+
+	}	
 }
