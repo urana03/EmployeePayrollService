@@ -40,5 +40,9 @@ public class EmployeePayrollService {
 		double salary = inputReader.nextDouble();
 		employeePayrollList.add(new EmployeePayrollData(id,name,salary));
 	}
+	public void printData(IOService ioService) throws IOException {
+		if(ioService.equals(IOService.FILE_IO))
+			new EmployeePayrollFileIOService().printData();
+	}
 	
 }
