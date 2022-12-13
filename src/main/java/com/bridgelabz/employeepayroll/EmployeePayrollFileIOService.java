@@ -27,8 +27,15 @@ public class EmployeePayrollFileIOService {
 		        	  e.printStackTrace();
 		        	  }
 			}
-			public void printData() throws IOException{
+
+
+			public void printData() throws IOException {
 				Files.lines(new File("payroll.txt").toPath()).forEach(System.out::println);
+				
+			}
+			public long countEntries() throws IOException {
+				long entries = 0;
+				return entries = Files.lines(new File("payroll.txt").toPath()).count();
 			}
 }
 
