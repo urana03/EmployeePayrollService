@@ -2,6 +2,7 @@ package com.bridgelabz.employeepayroll;
 
 import static org.junit.Assert.*;
 
+import java.io.IOException;
 import java.util.Arrays;
 
 import org.junit.Test;
@@ -10,7 +11,7 @@ import org.junit.Test;
 public class EmployeePayrollServiceTest {
 
 	@Test
-	public void givenThreeEmployeesWhenWritteToFileShouldMatchEntries() {
+	public void givenThreeEmployeesWhenWritteToFileShouldMatchEntries() throws IOException {
 		EmployeePayrollData[] arrayOfEmps= {
 				new EmployeePayrollData(1,"Jeff",10000.0),
 			    new EmployeePayrollData(2,"Henry",20000.0),
@@ -19,7 +20,7 @@ public class EmployeePayrollServiceTest {
 		EmployeePayrollService employeePayrollService;
 		employeePayrollService = new EmployeePayrollService(Arrays.asList(arrayOfEmps));
 		employeePayrollService.writeEmployeePayrollData(EmployeePayrollService.IOService.FILE_IO);
-
+        employeePayrollService.printData(EmployeePayrollService.IOService.FILE_IO);
 	}
 
 }
